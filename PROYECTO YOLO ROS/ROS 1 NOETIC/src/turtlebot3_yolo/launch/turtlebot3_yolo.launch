@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="turtlebot3_yolo" type="turtlebot3_yolo.py" name="turtlebot3_yolo" output="screen">
+  </node>
+</launch>

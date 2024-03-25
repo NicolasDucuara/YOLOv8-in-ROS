@@ -1,0 +1,53 @@
+Actualizar los paquetes:
+sudo apt-get update
+sudo apt-get upgrade
+
+
+Instalar python2, net-tools y pip3:
+sudo apt install python
+sudo apt install net-tools
+sudo apt install python3-pip
+
+
+
+Instalar ROS Noetic:
+wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_noetic.sh
+chmod 755 ./install_ros_noetic.sh 
+bash ./install_ros_noetic.sh
+sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
+  ros-noetic-teleop-twist-keyboard ros-noetic-laser-proc \
+  ros-noetic-rgbd-launch ros-noetic-rosserial-arduino \
+  ros-noetic-rosserial-python ros-noetic-rosserial-client \
+  ros-noetic-rosserial-msgs ros-noetic-amcl ros-noetic-map-server \
+  ros-noetic-move-base ros-noetic-urdf ros-noetic-xacro \
+  ros-noetic-compressed-image-transport ros-noetic-rqt* ros-noetic-rviz \
+  ros-noetic-gmapping ros-noetic-navigation ros-noetic-interactive-markers
+
+
+
+Paquetes de Turtlebot3:
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src/
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+cd ~/catkin_ws && catkin_make
+echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+
+
+Instalar paquetes y librerias para YOLOV8:
+pip3 install ultralytics
+
+
+Raspberry pi 4:
+sudo pip install RPi.GPIO
+sudo apt install ros-noetic-usb-cam
+cd ~/catkin_ws/src
+git clone https://github.com/KhairulIzwan/turtlebot3_gpio_control.git
+cd ~/catkin_ws && catkin_make
+
+
+
+
+

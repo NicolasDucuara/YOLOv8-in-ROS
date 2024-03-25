@@ -1,0 +1,52 @@
+Actualizar los paquetes:
+sudo apt-get update
+sudo apt-get upgrade
+
+
+Instalar python2, net-tools y pip3:
+sudo apt install python
+sudo apt install net-tools
+sudo apt install python3-pip
+
+
+Instalar ROS2 Foxy:
+wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros2_foxy.sh
+sudo chmod 755 ./install_ros2_foxy.sh
+bash ./install_ros2_foxy.sh
+sudo apt install ros-dev-tools
+sudo apt-get install ros-foxy-gazebo-*
+sudo apt install ros-foxy-cartographer
+sudo apt install ros-foxy-cartographer-ros
+sudo apt install ros-foxy-navigation2
+sudo apt install ros-foxy-nav2-bringup
+sudo apt install python3-colcon-common-extensions
+sudo apt install ros-foxy-gazebo-ros
+
+Paquetes de turtlebot3:
+mkdir -p ~/turtlebot3_ws/src
+cd ~/turtlebot3_ws/src/
+git clone -b foxy-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+git clone -b foxy-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+git clone -b foxy-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+cd ~/turtlebot3_ws
+colcon build --symlink-install
+echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
+source ~/.bashrc
+
+
+Entorno:
+echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc
+source ~/.bashrc
+
+
+Instalar paquetes y librerias para YOLOV8:
+pip3 install ultralytics
+
+
+Raspberry pi 4:
+sudo apt install v4l-utils ros-foxy-v4l2-camera  
+
+sudo apt install ros-foxy-image-transport-plugins ros-foxy-image-transport ros-foxy-image-common ros-foxy-vision-opencv ros-foxy-compressed-image-transport ros-foxy-camera-info-manager ros-foxy-cv-bridge ros-foxy-image-proc ros-foxy-usb-cam
+
+
+

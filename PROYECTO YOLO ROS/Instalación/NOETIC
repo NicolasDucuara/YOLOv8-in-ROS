@@ -1,0 +1,39 @@
+nano ~/.bashrc
+source ~/.bashrc
+sudo nano /etc/netplan/50-cloud-init.yaml
+sudo netplan apply
+
+########NOETIC########################NOETIC##########
+
+PC:
+roscore
+catkin_make
+
+
+Simulación:
+export TURTLEBOT3_MODEL=waffle_pi
+roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+
+roslaunch turtlebot3_yolo turtlebot3_yolo.launch
+roslaunch turtlebot3_mov turtlebot3_mov.launch
+
+
+raspberry:
+cd /opt/ros/noetic/share/usb_cam/launch
+sudo nano usb_cam-test.launch  #Modificar parámetros de cámara
+
+
+rosrun usb_cam usb_cam_node
+roslaunch usb_cam usb_cam-test.launch
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+rosrun turtlebot3_gpio_control blink_LED.py
+
+
+SLAM:
+roslaunch turtlebot3_slam turtlebot3_slam.launch
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+rosrun map_server map_saver -f ~/map
+
+NAV:
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+
